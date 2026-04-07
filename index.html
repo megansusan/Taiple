@@ -1,0 +1,2194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Taiple · 臺廟網 — Taiwan's living temple culture">
+<title>Taiple · 臺廟網</title>
+<style>
+@font-face {
+  font-family: 'NewFont';
+  src: url('fonts/NewFont-Regular.woff2') format('woff2'),
+       url('fonts/NewFont-Regular.woff') format('woff'),
+       url('fonts/NewFont-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MinionVariable';
+  src: url('fonts/MinionVariableConcept-Roman.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'NotoSerifJP';
+  src: url('fonts/Noto Serif JP-900.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+:root {
+  --brown:  #1a0a04;
+  --cream:  #F5F0E8;
+  --red:    #CC2200;
+  --gold:   #C8A96E;
+  --bg:     #FAFAF8;
+  --text1:  #1a0a04;
+  --text2:  #5a3a20;
+  --text3:  #8a6a50;
+  --page-w: 430px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #111;
+  font-family: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+  color: var(--text1);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+#page {
+  width: 100%;
+  max-width: var(--page-w);
+  margin: 0 auto;
+  background: var(--bg);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  box-shadow: 0 0 80px rgba(0,0,0,0.45), 0 0 200px rgba(0,0,0,0.2);
+}
+
+/* ─── TOP NAV ──────────────────────────────────── */
+#topnav {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--page-w);
+  z-index: 200;
+  padding: calc(env(safe-area-inset-top, 0px) + 12px) 20px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(245, 240, 224, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(26,10,4,0.06);
+}
+.nav-logo-img {
+  height: 32px;
+  width: auto;
+  display: block;
+  filter: brightness(0);
+}
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--brown);
+  border-radius: 2px;
+}
+#topnav.scrolled .nav-logo-img { opacity: 1; transform: translateY(0); }
+.nav-logo-wrap {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-toggle {
+  background: none;
+  border: 1px solid rgba(26,10,4,0.2);
+  border-radius: 20px;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s;
+}
+.lang-toggle:active { background: rgba(26,10,4,0.06); }
+.lang-opt {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(26,10,4,0.35);
+  letter-spacing: 0.04em;
+  transition: color 0.25s;
+}
+.lang-opt.active { color: var(--brown); }
+.lang-divider {
+  font-size: 11px;
+  color: rgba(26,10,4,0.2);
+}
+.nav-hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-hamburger:active { background: rgba(26,10,4,0.08); }
+.nav-hamburger:active { background: rgba(255,255,255,0.1); }
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 2px;
+}
+
+/* ─── SECTION 1: HERO ───────────────────────────── */
+#hero {
+  position: relative;
+  width: 100%;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 60px);
+  background: #f5f0e0;
+}
+.hero-poster {
+  width: 100%;
+  display: block;
+}
+.hero-year-badge {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 72px);
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.hero-year-num {
+  font-family: 'MinionVariable', Georgia, serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brown);
+  letter-spacing: 0.18em;
+}
+.hero-scroll-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+  opacity: 0.7;
+  animation: hintBounce 2s ease-in-out infinite;
+}
+.hero-scroll-hint span {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+.hero-scroll-hint svg {
+  width: 16px;
+  height: 16px;
+}
+@keyframes hintBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(5px); }
+}
+.hero-year-zh {
+  font-family: 'NotoSerifJP', Georgia, serif;
+  font-size: 11px;
+  color: var(--brown);
+  opacity: 0.65;
+  letter-spacing: 0.12em;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 1.4;
+}
+
+/* ─── SECTION 2: BEGIN YOUR RITUAL ─────────────── */
+#ritual-section {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  background: url('color-cover.png') center center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ritual-section-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(60,0,30,0.55) 0%, rgba(10,0,5,0.72) 100%);
+}
+.ritual-section-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.ritual-section-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.ritual-section-headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 58px;
+  font-weight: 700;
+  color: white;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.ritual-section-sub {
+  font-size: 15px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: 28px;
+  white-space: pre-line;
+}
+.ritual-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+.ritual-step {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 14px;
+  padding: 14px 16px;
+  text-align: left;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.ritual-step-num {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  min-width: 22px;
+  opacity: 0.9;
+}
+.ritual-step-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+.ritual-step-info { flex: 1; }
+.ritual-step-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(255,255,255,1);
+  margin-bottom: 2px;
+}
+.ritual-step-desc {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+}
+.ritual-section-btn {
+  background: var(--red);
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 16px 36px;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  font-family: -apple-system, 'SF Pro Text', system-ui, sans-serif;
+  transition: opacity 0.2s, transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.ritual-section-btn:active { opacity: 0.85; transform: scale(0.97); }
+.ritual-section-link {
+  margin-top: 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.38);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s;
+}
+.ritual-section-link:active { color: rgba(255,255,255,0.65); }
+
+/* ─── SECTION 3: THE GODS ───────────────────────── */
+#gods {
+  background: var(--bg);
+  padding: 0 0 56px;
+}
+.gods-section-header {
+  padding: 48px 20px 20px;
+  border-bottom: 2px solid var(--brown);
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+.gods-section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.gods-see-all {
+  font-size: 12px;
+  color: var(--red);
+  cursor: pointer;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  -webkit-tap-highlight-color: transparent;
+}
+.god-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1.5px solid rgba(26,10,4,0.1);
+  cursor: pointer;
+  transition: background 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 86px;
+}
+.god-row:active { background: rgba(26,10,4,0.04); }
+.god-row-text {
+  flex: 1;
+  padding: 14px 12px 14px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.god-row-name {
+  font-family: 'NotoSerifJP', Georgia, serif;
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--brown);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.god-row-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+.god-row-zh {
+  font-size: 13px;
+  color: var(--text2);
+  font-family: 'NotoSerifJP', Georgia, serif;
+}
+.god-row-role {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+.god-row-img {
+  width: 80px;
+  flex-shrink: 0;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: var(--cream);
+}
+
+
+/* ─── SECTION 2.5: QUICK INTRO ─────────────────── */
+#quick-intro {
+  background: var(--bg);
+  padding: 44px 28px 48px;
+  border-bottom: 1px solid rgba(26,10,4,0.06);
+}
+.intro-headline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--brown);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.intro-body {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.intro-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.intro-tag {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text3);
+  background: var(--cream);
+  border: 1px solid rgba(26,10,4,0.08);
+  padding: 5px 12px;
+  border-radius: 100px;
+}
+
+/* ─── SECTION 4: ABOUT STRIP ────────────────────── */
+#about-strip {
+  background: var(--brown);
+  padding: 52px 28px 56px;
+}
+.about-stats {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+.about-stat { display: flex; flex-direction: column; gap: 5px; }
+.about-stat-num {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: -0.01em;
+}
+.about-stat-label {
+  font-size: 11px;
+  color: rgba(245,240,232,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.about-tagline {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-style: italic;
+  font-size: 20px;
+  color: var(--cream);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  white-space: pre-line;
+}
+.about-divider {
+  height: 1px;
+  background: rgba(245,240,232,0.1);
+  margin-bottom: 16px;
+}
+.about-footer-text {
+  font-size: 11px;
+  color: rgba(245,240,232,0.25);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+#footer {
+  background: #080300;
+  padding: 20px 20px calc(env(safe-area-inset-bottom, 0px) + 20px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer-left { font-size: 12px; color: rgba(245,240,232,0.3); }
+.footer-right { font-size: 12px; color: rgba(245,240,232,0.25); display: flex; gap: 12px; }
+.footer-right a { color: inherit; text-decoration: none; }
+.footer-right a:active { color: rgba(245,240,232,0.6); }
+
+/* ─── MENU DRAWER ───────────────────────────────── */
+#menu-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 450;
+  background: rgba(10,4,0,0.97);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  max-width: var(--page-w);
+  left: 50%;
+  transform: translateX(-50%);
+}
+#menu-drawer.open { opacity: 1; pointer-events: all; }
+.menu-close {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 18px);
+  right: 20px;
+  background: none;
+  border: none;
+  color: rgba(245,240,232,0.6);
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px;
+  line-height: 1;
+  transition: color 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.menu-close:active { color: var(--cream); }
+.menu-items { list-style: none; }
+.menu-items li { border-bottom: 1px solid rgba(245,240,232,0.08); }
+.menu-items li:first-child { border-top: 1px solid rgba(245,240,232,0.08); }
+.menu-items a {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: rgba(245,240,232,0.85);
+  text-decoration: none;
+  padding: 18px 0;
+  letter-spacing: -0.01em;
+  transition: color 0.2s, padding-left 0.2s;
+}
+.menu-items a:active { color: var(--gold); }
+.menu-tagline {
+  margin-top: 40px;
+  font-size: 12px;
+  color: rgba(245,240,232,0.25);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ─── RITUAL OVERLAY ────────────────────────────── */
+#ritual-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  max-width: var(--page-w);
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+}
+#ritual-overlay.open { transform: translateX(-50%) translateY(0); }
+.ritual-panel {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.ritual-panel.active { display: flex; }
+.ritual-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: calc(env(safe-area-inset-top, 0px) + 14px) 20px 14px;
+  flex-shrink: 0;
+}
+.ritual-nav-btn {
+  background: rgba(255,255,255,0.08);
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: background 0.2s;
+  color: rgba(245,240,232,0.8);
+  -webkit-tap-highlight-color: transparent;
+}
+.ritual-nav-btn:active { background: rgba(255,255,255,0.18); }
+.ritual-nav-step {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.ritual-nav-action {
+  font-size: 13px;
+  color: var(--gold);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  min-width: 36px;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.ritual-nav-spacer { min-width: 36px; }
+.ritual-progress {
+  height: 3px;
+  background: rgba(255,255,255,0.12);
+  flex-shrink: 0;
+  margin: 0 20px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.ritual-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.ritual-content {
+  padding: 24px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* ─── PANEL 1: INTENT ───────────────────────────── */
+#panel-1 { background: var(--brown); }
+.ritual-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.ritual-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.ritual-sub {
+  font-size: 14px;
+  color: rgba(245,240,232,0.5);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+.intent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 12px;
+  row-gap: 24px;
+  margin-top: 28px;
+  margin-bottom: 24px;
+  width: 100%;
+  align-self: stretch;
+}
+.intent-card {
+  border-radius: 18px;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.intent-card:active { transform: scale(0.93); }
+.intent-card-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.intent-card-label { display: none; }
+.intent-emoji { font-size: 30px; line-height: 1; margin-bottom: auto; padding-bottom: 10px; }
+.intent-name { font-size: 17px; font-weight: 600; color: white; letter-spacing: 0.01em; }
+.intent-zh { font-family: 'NotoSerifJP', serif; font-size: 13px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; }
+.intent-unsure {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(245,240,232,0.35);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 8px 0 4px;
+  -webkit-tap-highlight-color: transparent;
+}
+.intent-unsure:active { color: var(--cream); }
+
+/* ─── PANEL 2: GOD REVEAL (full-screen image) ────── */
+#panel-2 {
+  background: #18103a;
+  transition: background 0.6s ease;
+}
+.panel2-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 0;
+}
+.panel2-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.97) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+#panel-2 .ritual-nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: transparent !important;
+}
+.panel2-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px 24px 40px;
+  padding-bottom: calc(40px + env(safe-area-inset-bottom, 0px));
+}
+.panel2-seeking {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.panel2-god-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.panel2-god-zh {
+  font-size: 16px;
+  color: rgba(245,240,232,0.55);
+  margin-bottom: 12px;
+}
+.panel2-badge {
+  display: inline-block;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.panel2-prompt {
+  font-size: 17px;
+  color: rgba(245,240,232,0.75);
+  font-style: italic;
+  line-height: 1.55;
+  margin-bottom: 28px;
+}
+.btn-primary {
+  width: 100%;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 18px 20px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s, transform 0.15s;
+  -webkit-tap-highlight-color: transparent;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+}
+.btn-primary:active { opacity: 0.85; transform: scale(0.98); }
+.btn-text-link {
+  background: none;
+  border: none;
+  color: rgba(245,240,232,0.4);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  padding: 12px 0 0;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  text-align: center;
+}
+.btn-text-link:active { color: var(--cream); }
+
+/* ─── PANEL 3: TOSS ─────────────────────────────── */
+#panel-3 { background: var(--brown); }
+.toss-god-context {
+  padding: 20px 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.toss-god-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.toss-god-info { flex: 1; }
+.toss-god-ask {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.3;
+}
+.toss-god-sub {
+  font-size: 12px;
+  color: rgba(245,240,232,0.4);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+.toss-card {
+  margin: 16px 20px 0;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 24px;
+  padding: 24px 20px;
+}
+.toss-blocks-row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 20px;
+}
+.toss-block-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.block-scene {
+  width: 100px;
+  height: 160px;
+  perspective: 500px;
+}
+.block-flipper {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+.block-flipper.flipped { transform: rotateY(180deg); }
+.block-face {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.block-back { transform: rotateY(180deg); }
+.block-badge {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(245,240,232,0.3);
+  text-align: center;
+  height: 18px;
+  transition: color 0.3s;
+}
+.block-badge.yang { color: var(--gold); }
+.block-badge.yin  { color: rgba(245,240,232,0.45); }
+.toss-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+.toss-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  transition: background 0.4s;
+}
+.toss-dot.lit { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+.toss-result-banner {
+  text-align: center;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 16px;
+  display: none;
+  animation: fadeSlideUp 0.4s ease;
+}
+.toss-result-banner.visible { display: block; }
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.result-icon { font-size: 28px; margin-bottom: 4px; }
+.result-title { font-size: 14px; font-weight: 700; color: var(--cream); margin-bottom: 4px; }
+.result-zh { font-size: 12px; color: var(--gold); margin-bottom: 6px; }
+.result-msg { font-size: 13px; color: rgba(245,240,232,0.6); line-height: 1.55; }
+#toss-btn {
+  width: 100%;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s, background 0.3s;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+#toss-btn:active { transform: scale(0.97); }
+#toss-btn.confirmed { background: #1a5c2a; }
+.toss-legend {
+  margin-top: 20px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.toss-legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 11px;
+  color: rgba(245,240,232,0.38);
+  line-height: 1.45;
+}
+.toss-legend-icon { flex-shrink: 0; font-size: 14px; }
+
+/* ─── PANEL 4: LETTER ───────────────────────────── */
+#panel-4 { background: var(--brown); }
+.letter-god-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.letter-god-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.letter-god-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--cream);
+}
+.letter-god-sub { font-size: 12px; color: rgba(245,240,232,0.45); margin-top: 2px; }
+.letter-prompt-text {
+  font-size: 18px;
+  color: rgba(245,240,232,0.65);
+  font-style: italic;
+  line-height: 1.55;
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 0 16px;
+}
+#letter-textarea {
+  width: 100%;
+  min-height: 150px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 18px;
+  font-size: 15px;
+  color: var(--cream);
+  line-height: 1.65;
+  resize: none;
+  outline: none;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  transition: border-color 0.2s;
+  margin-bottom: 16px;
+}
+#letter-textarea::placeholder { color: rgba(245,240,232,0.25); }
+#letter-textarea:focus { border-color: rgba(200,169,110,0.4); }
+.letter-btns { display: flex; gap: 10px; margin-bottom: 20px; }
+.btn-secondary {
+  flex: 1;
+  height: 52px;
+  background: rgba(255,255,255,0.08);
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-secondary:active { background: rgba(255,255,255,0.14); }
+.btn-burn {
+  flex: 1;
+  height: 52px;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-burn:active { opacity: 0.82; }
+.letter-temple-link {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(245,240,232,0.35);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-top: 20px;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.letter-temple-link:active { color: var(--cream); }
+
+/* ─── GOD DETAIL MODAL ───────────────────────────── */
+#god-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  max-width: var(--page-w);
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  transition: transform 0.42s cubic-bezier(0.32, 0.72, 0, 1);
+  background: var(--bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+#god-modal.open { transform: translateX(-50%) translateY(0); }
+.modal-hero {
+  height: 300px;
+  position: relative;
+  background-size: cover;
+  background-position: center top;
+  flex-shrink: 0;
+}
+.modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.72) 100%);
+}
+.modal-close {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 14px);
+  left: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s;
+}
+.modal-close:active { background: rgba(0,0,0,0.7); }
+.modal-hero-meta {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  z-index: 2;
+}
+.modal-badge {
+  display: inline-block;
+  background: rgba(200,169,110,0.2);
+  border: 1px solid rgba(200,169,110,0.6);
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.modal-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 44px;
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.modal-zh { font-size: 14px; color: rgba(255,255,255,0.65); }
+.modal-body { padding: 28px 24px 40px; }
+.modal-section-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text3);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.modal-story {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 28px;
+}
+.modal-prayers { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 28px; }
+.prayer-chip {
+  background: var(--cream);
+  border: 1px solid rgba(26,10,4,0.1);
+  color: var(--text2);
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+.modal-symbol {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.75;
+  margin-bottom: 32px;
+}
+.btn-speak {
+  width: 100%;
+  background: var(--red);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: opacity 0.2s;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-speak:active { opacity: 0.82; }
+
+/* ─── BURN OVERLAY ───────────────────────────────── */
+#burn-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 700;
+  max-width: var(--page-w);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(10,3,0,0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  padding: 40px;
+}
+#burn-overlay.open { opacity: 1; pointer-events: all; }
+.burn-fire {
+  font-size: 72px;
+  animation: flicker 0.6s ease-in-out infinite alternate;
+}
+@keyframes flicker {
+  from { transform: scale(1) rotate(-2deg); filter: brightness(1); }
+  to   { transform: scale(1.08) rotate(2deg); filter: brightness(1.3); }
+}
+.burn-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 24px;
+  color: var(--cream);
+  font-weight: 700;
+  text-align: center;
+}
+.burn-sub { font-size: 14px; color: rgba(245,240,232,0.5); text-align: center; line-height: 1.65; }
+.burn-close {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  color: var(--cream);
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+  font-family: -apple-system, 'SF Pro Text', sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.2s;
+}
+.burn-close:active { background: rgba(255,255,255,0.16); }
+
+/* ─── SCROLL REVEAL ──────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav id="topnav">
+  <a href="#" onclick="return false;" aria-label="Taiple home" class="nav-logo-wrap">
+    <img src="images/logo-header.png" alt="臺廟網 TAIPLE" class="nav-logo-img">
+  </a>
+  <div class="nav-right">
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+      <span class="lang-opt" id="lang-en">EN</span>
+      <span class="lang-divider">·</span>
+      <span class="lang-opt" id="lang-zh">中</span>
+    </button>
+    <button class="nav-hamburger" onclick="openMenu()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE -->
+<div id="page">
+
+  <!-- SECTION 1: HERO -->
+  <section id="hero">
+    <div class="hero-year-badge">
+      <span class="hero-year-num">2026</span>
+      <span class="hero-year-zh">丙午年</span>
+    </div>
+    <img class="hero-poster" src="images/hero-main.png" alt="Taiple · 臺廟網">
+    <div class="hero-scroll-hint">
+      <span>Explore</span>
+      <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 3v10M3 9l5 5 5-5" stroke="#1a0a04" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- QUICK INTRO -->
+  <section id="quick-intro" class="reveal">
+    <h2 class="intro-headline" data-en="Taiwan has 12,000 temples.<br>This is your guide inside." data-zh="台灣有12,000座廟宇。<br>這是你的入門指南。">Taiwan has 12,000 temples.<br>This is your guide inside.</h2>
+    <p class="intro-body" data-en="Every neighborhood has one. Every family has a god. Taiple helps you understand Taiwan's living temple culture — and take part in it." data-zh="每個街坊都有一座。每個家庭都有守護神。臺廟網帶你走進台灣廟宇文化的日常。">Every neighborhood has one. Every family has a god. Taiple helps you understand Taiwan's living temple culture — and take part in it.</p>
+    <div class="intro-tags">
+      <span class="intro-tag">求神 · Seek</span>
+      <span class="intro-tag">探廟 · Explore</span>
+      <span class="intro-tag">祈禱 · Connect</span>
+    </div>
+  </section>
+
+  <!-- SECTION 2: BEGIN YOUR RITUAL -->
+  <section id="ritual-section">
+    <div class="ritual-section-overlay"></div>
+    <div class="ritual-section-inner">
+      <p class="ritual-section-eyebrow">求神問卜 · Seek Guidance</p>
+      <h2 class="ritual-section-headline">BEGIN<br>YOUR<br>RITUAL</h2>
+      <p class="ritual-section-sub" data-en="A 4-step guided experience — free, takes 2 minutes." data-zh="四步驟引導體驗——免費，只需兩分鐘。">A 4-step guided experience — free, takes 2 minutes.</p>
+      <div class="ritual-steps">
+        <div class="ritual-step">
+          <span class="ritual-step-num">01</span>
+          <span class="ritual-step-icon">🙏</span>
+          <div class="ritual-step-info">
+            <div class="ritual-step-label" data-en="Tell us what you need" data-zh="告訴我們你的心願">Tell us what you need</div>
+            <div class="ritual-step-desc" data-en="Love, success, health, wealth — you choose" data-zh="愛情、成功、健康、財富——由你選擇">Love, success, health, wealth — you choose</div>
+          </div>
+        </div>
+        <div class="ritual-step">
+          <span class="ritual-step-num">02</span>
+          <span class="ritual-step-icon">⛩️</span>
+          <div class="ritual-step-info">
+            <div class="ritual-step-label" data-en="Meet your deity" data-zh="認識你的守護神">Meet your deity</div>
+            <div class="ritual-step-desc" data-en="We match you to the right god for your intention" data-zh="我們為你的心願配對最適合的神明">We match you to the right god for your intention</div>
+          </div>
+        </div>
+        <div class="ritual-step">
+          <span class="ritual-step-num">03</span>
+          <span class="ritual-step-icon">🌙</span>
+          <div class="ritual-step-info">
+            <div class="ritual-step-label" data-en="Toss the moon blocks" data-zh="擲筊問神">Toss the moon blocks</div>
+            <div class="ritual-step-desc" data-en="A real Taiwanese divination ritual, explained" data-zh="體驗真實的台灣傳統占卜儀式">A real Taiwanese divination ritual, explained</div>
+          </div>
+        </div>
+        <div class="ritual-step">
+          <span class="ritual-step-num">04</span>
+          <span class="ritual-step-icon">✉️</span>
+          <div class="ritual-step-info">
+            <div class="ritual-step-label" data-en="Write your prayer" data-zh="書寫祈禱文">Write your prayer</div>
+            <div class="ritual-step-desc" data-en="Send it to the god — or burn it in ceremony" data-zh="將祈禱文獻給神明，或在儀式中焚化">Send it to the god — or burn it in ceremony</div>
+          </div>
+        </div>
+      </div>
+      <button class="ritual-section-btn" onclick="openRitual()" data-en="Start the ritual →" data-zh="開始儀式 →">Start the ritual &rarr;</button>
+      <p class="ritual-section-link" onclick="document.getElementById('gods').scrollIntoView({behavior:'smooth'})" data-en="or explore temples ↓" data-zh="或探索廟宇 ↓">or explore temples &darr;</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: THE GODS -->
+  <section id="gods">
+    <div class="gods-section-header reveal">
+      <span class="gods-section-title">The Gods · 諸神</span>
+      <span class="gods-see-all" onclick="showAllGods()" data-en="See all →" data-zh="查看全部 →">See all &rarr;</span>
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('mazu')" style="transition-delay:0.04s">
+      <div class="god-row-text">
+        <div class="god-row-name">MAZU</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">媽祖</span>
+          <span class="god-row-role" data-en="Goddess of the Sea" data-zh="海洋女神">Goddess of the Sea</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/mazu.png" alt="Mazu" loading="lazy">
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('yuelao')" style="transition-delay:0.07s">
+      <div class="god-row-text">
+        <div class="god-row-name">YUE LAO</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">月老</span>
+          <span class="god-row-role" data-en="God of Love &amp; Destiny" data-zh="愛情與命運之神">God of Love &amp; Destiny</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/yue lao.png" alt="Yue Lao" loading="lazy">
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('wenchang')" style="transition-delay:0.10s">
+      <div class="god-row-text">
+        <div class="god-row-name">WEN CHANG</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">文昌帝君</span>
+          <span class="god-row-role" data-en="God of Literature" data-zh="文學與事業之神">God of Literature</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/wenchan.png" alt="Wen Chang" loading="lazy">
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('tudigong')" style="transition-delay:0.13s">
+      <div class="god-row-text">
+        <div class="god-row-name">TUDI GONG</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">土地公</span>
+          <span class="god-row-role" data-en="God of the Earth" data-zh="土地與財富之神">God of the Earth</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/tudigong.png" alt="Tudi Gong" loading="lazy">
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('guan')" style="transition-delay:0.16s">
+      <div class="god-row-text">
+        <div class="god-row-name">GUAN</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">關聖帝君</span>
+          <span class="god-row-role" data-en="God of Justice" data-zh="正義與忠義之神">God of Justice</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/guan.png" alt="Guan" loading="lazy">
+    </div>
+    <div class="god-row reveal" onclick="openGodModal('guanyin')" style="transition-delay:0.19s">
+      <div class="god-row-text">
+        <div class="god-row-name">GUANYIN</div>
+        <div class="god-row-meta">
+          <span class="god-row-zh">觀世音菩薩</span>
+          <span class="god-row-role" data-en="Goddess of Compassion" data-zh="慈悲女神">Goddess of Compassion</span>
+        </div>
+      </div>
+      <img class="god-row-img" src="images/guanin.png" alt="Guanyin" loading="lazy">
+    </div>
+  </section>
+
+  <!-- SECTION 4: ABOUT STRIP -->
+  <section id="about-strip" class="reveal">
+    <div class="about-stats">
+      <div class="about-stat">
+        <div class="about-stat-num">12,327</div>
+        <div class="about-stat-label">Temples</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">6</div>
+        <div class="about-stat-label">Gods</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat-num">2,000+</div>
+        <div class="about-stat-label">Years of history</div>
+      </div>
+    </div>
+    <p class="about-tagline">Taiwan's temples have
+been waiting for you.</p>
+    <div class="about-divider"></div>
+    <p class="about-footer-text">&#33591;&#23646;&#32178; &middot; Taiwan Temple Network</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <span class="footer-left">&copy; Taiple 2026</span>
+    <div class="footer-right">
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+    </div>
+  </footer>
+
+</div><!-- /#page -->
+
+<!-- MENU DRAWER -->
+<div id="menu-drawer">
+  <button class="menu-close" onclick="closeMenu()">&#10005;</button>
+  <ul class="menu-items">
+    <li><a href="#" onclick="closeMenu(); return false;">Home</a></li>
+    <li><a href="#gods" onclick="closeMenu();">Gods</a></li>
+    <li><a href="#" onclick="closeMenu(); openRitual(); return false;">Ritual</a></li>
+    <li><a href="#ritual-section" onclick="closeMenu();">Explore</a></li>
+    <li><a href="#about-strip" onclick="closeMenu();">About</a></li>
+  </ul>
+  <p class="menu-tagline">&#33591;&#23646;&#32178; &middot; Taiwan Temple Network</p>
+</div>
+
+<!-- RITUAL OVERLAY -->
+<div id="ritual-overlay">
+
+  <!-- PANEL 1: INTENT -->
+  <div id="panel-1" class="ritual-panel active">
+    <div class="ritual-nav" style="background:var(--brown);">
+      <button class="ritual-nav-btn" onclick="closeRitual()">&#10005;</button>
+      <span class="ritual-nav-step" data-en="Step 1 of 4" data-zh="第一步，共四步">Step 1 of 4</span>
+      <span class="ritual-nav-spacer"></span>
+    </div>
+    <div class="ritual-progress">
+      <div class="ritual-progress-fill" style="width:25%"></div>
+    </div>
+    <div class="ritual-content">
+      <p class="ritual-eyebrow" data-en="Begin Your Ritual" data-zh="開始你的儀式">Begin Your Ritual</p>
+      <h2 class="ritual-title" data-en="What do you need?" data-zh="你需要什麼？">What do you need?</h2>
+      <p class="ritual-sub" data-en="Choose your intention." data-zh="選擇你的心願。">Choose your intention.</p>
+      <div class="intent-grid">
+        <div class="intent-card" onclick="selectIntent('success')">
+          <img class="intent-card-img" src="images/intent-success.png" alt="Success">
+          <div class="intent-card-label">
+            <span class="intent-name">Success</span>
+            <span class="intent-zh">成功</span>
+          </div>
+        </div>
+        <div class="intent-card" onclick="selectIntent('love')">
+          <img class="intent-card-img" src="images/intent-love.png" alt="Love">
+          <div class="intent-card-label">
+            <span class="intent-name">Love</span>
+            <span class="intent-zh">愛情</span>
+          </div>
+        </div>
+        <div class="intent-card" onclick="selectIntent('health')">
+          <img class="intent-card-img" src="images/intent-health.png" alt="Health">
+          <div class="intent-card-label">
+            <span class="intent-name">Health</span>
+            <span class="intent-zh">健康</span>
+          </div>
+        </div>
+        <div class="intent-card" onclick="selectIntent('wealth')">
+          <img class="intent-card-img" src="images/intent-wealth.png" alt="Wealth">
+          <div class="intent-card-label">
+            <span class="intent-name">Wealth</span>
+            <span class="intent-zh">財富</span>
+          </div>
+        </div>
+        <div class="intent-card" onclick="selectIntent('wisdom')">
+          <img class="intent-card-img" src="images/intent-wisdom.png" alt="Wisdom">
+          <div class="intent-card-label">
+            <span class="intent-name">Wisdom</span>
+            <span class="intent-zh">智慧</span>
+          </div>
+        </div>
+        <div class="intent-card" onclick="selectIntent('luck')">
+          <img class="intent-card-img" src="images/intent-goodluck.png" alt="Good Luck">
+          <div class="intent-card-label">
+            <span class="intent-name">Luck</span>
+            <span class="intent-zh">好運</span>
+          </div>
+        </div>
+      </div>
+      <p class="intent-unsure" onclick="showAllGodsRitual()" data-en="Not sure? Show me all gods →" data-zh="不確定？顯示所有神明 →">Not sure? Show me all gods &rarr;</p>
+    </div>
+  </div>
+
+  <!-- PANEL 2: GOD REVEAL -->
+  <div id="panel-2" class="ritual-panel">
+    <!-- Full-panel background image -->
+    <img class="panel2-bg-img" id="p2-img" src="images/wenchan.png" alt="God">
+    <!-- Gradient overlay -->
+    <div class="panel2-gradient"></div>
+    <!-- Nav (absolutely positioned over image) -->
+    <div class="ritual-nav" id="panel2-nav" style="background:transparent;">
+      <button class="ritual-nav-btn" onclick="goToRitualStep(1)">&#8592;</button>
+      <span class="ritual-nav-step" data-en="Step 2 of 4" data-zh="第二步，共四步">Step 2 of 4</span>
+      <button class="ritual-nav-action" onclick="openGodModalFromRitual()" data-en="Story" data-zh="神明故事">Story</button>
+    </div>
+    <!-- Content anchored to bottom -->
+    <div class="panel2-body">
+      <p class="panel2-seeking" id="p2-seeking">YOU'RE SEEKING SUCCESS</p>
+      <h2 class="panel2-god-name" id="p2-name">Wen Chang</h2>
+      <p class="panel2-god-zh" id="p2-zh">&#25991;&#26578;&#24115;&#21476;</p>
+      <span class="panel2-badge" id="p2-badge">God of Literature &amp; Career</span>
+      <p class="panel2-prompt" id="p2-prompt">"What clarity are you searching for?"</p>
+      <button class="btn-primary" id="p2-begin-btn" onclick="goToRitualStep(3)">Begin the ritual with Wen Chang &rarr;</button>
+      <button class="btn-text-link" onclick="openGodModalFromRitual()" data-en="Read their full story" data-zh="閱讀完整神明故事">Read their full story</button>
+    </div>
+  </div>
+
+  <!-- PANEL 3: TOSS -->
+  <div id="panel-3" class="ritual-panel">
+    <div class="ritual-nav" style="background:var(--brown);">
+      <button class="ritual-nav-btn" onclick="goToRitualStep(2)">&#8592;</button>
+      <span class="ritual-nav-step" data-en="Step 3 of 4" data-zh="第三步，共四步">Step 3 of 4</span>
+      <span class="ritual-nav-spacer"></span>
+    </div>
+    <div class="ritual-progress">
+      <div class="ritual-progress-fill" style="width:75%"></div>
+    </div>
+    <!-- God context header -->
+    <div class="toss-god-context">
+      <img class="toss-god-img" id="p3-god-img" src="images/wenchan.png" alt="God">
+      <div class="toss-god-info">
+        <div class="toss-god-ask" id="p3-god-ask">Ask Wen Chang if they hear you</div>
+        <div class="toss-god-sub" data-en="Toss 3 times to confirm" data-zh="擲三次以確認">Toss 3 times to confirm</div>
+      </div>
+    </div>
+    <!-- Toss card -->
+    <div class="toss-card">
+      <div class="toss-blocks-row">
+        <!-- Block A -->
+        <div class="toss-block-wrap">
+          <div class="block-scene">
+            <div class="block-flipper" id="block-a">
+              <div class="block-face block-front">
+                <svg width="100" height="160" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="yangGradA" cx="45%" cy="38%" r="60%">
+                      <stop offset="0%" stop-color="#C07840"/>
+                      <stop offset="55%" stop-color="#8B5228"/>
+                      <stop offset="100%" stop-color="#5a3010"/>
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="50" cy="80" rx="42" ry="70" fill="url(#yangGradA)"/>
+                  <line x1="24" y1="52" x2="76" y2="52" stroke="rgba(255,200,120,0.18)" stroke-width="1"/>
+                  <line x1="19" y1="68" x2="81" y2="68" stroke="rgba(255,200,120,0.14)" stroke-width="1"/>
+                  <line x1="16" y1="84" x2="84" y2="84" stroke="rgba(255,200,120,0.12)" stroke-width="1"/>
+                  <line x1="19" y1="100" x2="81" y2="100" stroke="rgba(255,200,120,0.10)" stroke-width="1"/>
+                  <line x1="24" y1="116" x2="76" y2="116" stroke="rgba(255,200,120,0.08)" stroke-width="1"/>
+                  <text id="svg-label-a-yang" x="50" y="153" text-anchor="middle" font-size="8" fill="rgba(255,220,150,0.55)" font-family="sans-serif">Curved · Yang</text>
+                </svg>
+              </div>
+              <div class="block-face block-back">
+                <svg width="100" height="160" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="yinGradA" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#2a1408"/>
+                      <stop offset="100%" stop-color="#120602"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="10" y="12" width="80" height="136" rx="18" fill="url(#yinGradA)"/>
+                  <text id="svg-label-a-yin" x="50" y="153" text-anchor="middle" font-size="8" fill="rgba(245,240,232,0.35)" font-family="sans-serif">Flat · Yin</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="block-badge" id="badge-a">&mdash;</div>
+        </div>
+        <!-- Block B -->
+        <div class="toss-block-wrap">
+          <div class="block-scene">
+            <div class="block-flipper" id="block-b">
+              <div class="block-face block-front">
+                <svg width="100" height="160" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="yangGradB" cx="45%" cy="38%" r="60%">
+                      <stop offset="0%" stop-color="#C07840"/>
+                      <stop offset="55%" stop-color="#8B5228"/>
+                      <stop offset="100%" stop-color="#5a3010"/>
+                    </radialGradient>
+                  </defs>
+                  <ellipse cx="50" cy="80" rx="42" ry="70" fill="url(#yangGradB)"/>
+                  <line x1="24" y1="52" x2="76" y2="52" stroke="rgba(255,200,120,0.18)" stroke-width="1"/>
+                  <line x1="19" y1="68" x2="81" y2="68" stroke="rgba(255,200,120,0.14)" stroke-width="1"/>
+                  <line x1="16" y1="84" x2="84" y2="84" stroke="rgba(255,200,120,0.12)" stroke-width="1"/>
+                  <line x1="19" y1="100" x2="81" y2="100" stroke="rgba(255,200,120,0.10)" stroke-width="1"/>
+                  <line x1="24" y1="116" x2="76" y2="116" stroke="rgba(255,200,120,0.08)" stroke-width="1"/>
+                  <text id="svg-label-b-yang" x="50" y="153" text-anchor="middle" font-size="8" fill="rgba(255,220,150,0.55)" font-family="sans-serif">Curved · Yang</text>
+                </svg>
+              </div>
+              <div class="block-face block-back">
+                <svg width="100" height="160" viewBox="0 0 100 160" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="yinGradB" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#2a1408"/>
+                      <stop offset="100%" stop-color="#120602"/>
+                    </linearGradient>
+                  </defs>
+                  <rect x="10" y="12" width="80" height="136" rx="18" fill="url(#yinGradB)"/>
+                  <text id="svg-label-b-yin" x="50" y="153" text-anchor="middle" font-size="8" fill="rgba(245,240,232,0.35)" font-family="sans-serif">Flat · Yin</text>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="block-badge" id="badge-b">&mdash;</div>
+        </div>
+      </div>
+      <!-- Progress dots -->
+      <div class="toss-dots">
+        <div class="toss-dot" id="dot-0"></div>
+        <div class="toss-dot" id="dot-1"></div>
+        <div class="toss-dot" id="dot-2"></div>
+      </div>
+      <!-- Result banner -->
+      <div class="toss-result-banner" id="toss-result">
+        <div class="result-icon" id="res-icon">&#127769;</div>
+        <div class="result-title" id="res-title">Moon &mdash; &#32854;&#26421;</div>
+        <div class="result-zh" id="res-zh">Deity Agrees</div>
+        <div class="result-msg" id="res-msg">One curved side up, one flat side up.</div>
+      </div>
+      <button id="toss-btn" onclick="doToss()" data-en="🌙 Toss the Blocks" data-zh="🌙 擲筊">&#127769; Toss the Blocks</button>
+    </div>
+    <!-- Legend -->
+    <div class="toss-legend">
+      <div class="toss-legend-item">
+        <span class="toss-legend-icon">&#127769;</span>
+        <span><strong style="color:rgba(245,240,232,0.65)" data-en="聖杯 Moon" data-zh="聖杯">聖杯 Moon</strong> <span data-en="— One each = deity agrees" data-zh="— 一正一反＝神明同意">— One each = deity agrees</span></span>
+      </div>
+      <div class="toss-legend-item">
+        <span class="toss-legend-icon">&#128516;</span>
+        <span><strong style="color:rgba(245,240,232,0.65)" data-en="笑杯 Laugh" data-zh="笑杯">笑杯 Laugh</strong> <span data-en="— Both curved = ask again" data-zh="— 兩面朝上＝再問一次">— Both curved = ask again</span></span>
+      </div>
+      <div class="toss-legend-item">
+        <span class="toss-legend-icon">&#9899;</span>
+        <span><strong style="color:rgba(245,240,232,0.65)" data-en="陰杯 Yin" data-zh="陰杯">陰杯 Yin</strong> <span data-en="— Both flat = not yet" data-zh="— 兩面朝下＝時機未到">— Both flat = not yet</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 4: LETTER -->
+  <div id="panel-4" class="ritual-panel">
+    <div class="ritual-nav" style="background:var(--brown);">
+      <button class="ritual-nav-btn" onclick="goToRitualStep(3)">&#8592;</button>
+      <span class="ritual-nav-step" data-en="Your Letter" data-zh="你的心願信">Your Letter</span>
+      <span class="ritual-nav-spacer"></span>
+    </div>
+    <div class="ritual-progress">
+      <div class="ritual-progress-fill" style="width:100%"></div>
+    </div>
+    <div class="ritual-content">
+      <div class="letter-god-header">
+        <img class="letter-god-img" id="p4-god-img" src="images/wenchan.png" alt="God">
+        <div>
+          <div class="letter-god-name" id="p4-god-name">Wen Chang</div>
+          <div class="letter-god-sub" data-en="Write to this god" data-zh="向這位神明書寫">Write to this god</div>
+        </div>
+      </div>
+      <p class="letter-prompt-text" id="p4-prompt">"What clarity are you searching for?"</p>
+      <textarea id="letter-textarea" placeholder="Write what is in your heart. This space is yours alone."></textarea>
+      <div class="letter-btns">
+        <button class="btn-secondary" onclick="keepLetter()" data-en="Keep it 📘" data-zh="保存 📘">Keep it &#128218;</button>
+        <button class="btn-burn" onclick="burnLetter()" data-en="Burn it 🔥" data-zh="焚化 🔥">Burn it &#128293;</button>
+      </div>
+      <p class="letter-temple-link" id="p4-temple-link" onclick="closeRitual()">Find a temple for Wen Chang &rarr;</p>
+    </div>
+  </div>
+
+</div><!-- /#ritual-overlay -->
+
+<!-- GOD DETAIL MODAL -->
+<div id="god-modal">
+  <div class="modal-hero" id="modal-hero-img">
+    <div class="modal-hero-overlay"></div>
+    <button class="modal-close" onclick="closeGodModal()">&#8592;</button>
+    <div class="modal-hero-meta">
+      <div class="modal-badge" id="modal-badge">Goddess of the Sea</div>
+      <h2 class="modal-name" id="modal-name">Mazu</h2>
+      <p class="modal-zh" id="modal-zh">&#23470;&#31456;&#12539;&#22825;&#19978;&#32854;&#27597;</p>
+    </div>
+  </div>
+  <div class="modal-body">
+    <p class="modal-section-label" data-en="Who They Are" data-zh="關於祂">Who They Are</p>
+    <p class="modal-story" id="modal-story"></p>
+    <p class="modal-section-label" data-en="What People Pray For" data-zh="人們向祂祈求">What People Pray For</p>
+    <div class="modal-prayers" id="modal-prayers"></div>
+    <p class="modal-section-label" data-en="Their Sacred Symbol" data-zh="神聖象徵">Their Sacred Symbol</p>
+    <p class="modal-symbol" id="modal-symbol"></p>
+    <button class="btn-speak" onclick="speakToGod()" data-en="🙏 Speak to this God" data-zh="🙏 向這位神明祈禱">&#128591; Speak to this God</button>
+  </div>
+</div>
+
+<!-- BURN OVERLAY -->
+<div id="burn-overlay">
+  <div class="burn-fire">&#128293;</div>
+  <h2 class="burn-title" data-en="Your letter has been received." data-zh="你的心願信已被收到。">Your letter has been received.</h2>
+  <p class="burn-sub" data-en="The smoke carries your words upward.<br>What you asked for has been heard." data-zh="青煙將你的心願帶往天上。<br>你所求之事，已被聆聽。">The smoke carries your words upward.<br>What you asked for has been heard.</p>
+  <button class="burn-close" onclick="closeBurn()" data-en="Close" data-zh="關閉">Close</button>
+</div>
+
+<script>
+var GODS = {
+  mazu: {
+    name: 'Mazu', zh: '媽祖·天上聖母',
+    badge: 'Goddess of the Sea', badge_zh: '海洋女神',
+    bg: '#18103a', img: 'images/mazu.png', intent: 'safety',
+    prompt: '"Who are you trying to protect?"',
+    prompt_zh: '「你想守護誰？」',
+    story: 'Mazu was born Lin Mo in 960 CE on Meizhou Island. She could calm storms with a single gesture. When she died at 28, sailors began praying to her — and she answered. Today she is Taiwan\'s most beloved deity, carried in procession every spring by a million pilgrims.',
+    story_zh: '媽祖原名林默，公元960年生於湄洲島。她能以一個手勢平息風浪。二十八歲辭世後，漁民開始向她祈禱——她回應了。如今她是台灣最受崇敬的神明，每年春天有百萬信眾隨其遶境。',
+    prayers: ['Safe travel', 'Family protection', 'Ocean crossings', 'Courage in uncertainty'],
+    prayers_zh: ['平安旅途', '家人守護', '航海平安', '面對未知的勇氣'],
+    symbol: 'Her crown of hanging beads shields followers from evil. Her red robes signal courage in the face of anything the sea can bring.',
+    symbol_zh: '她頭戴垂珠冠，護信眾免受邪惡侵擾。紅袍象徵面對海浪的無畏勇氣。'
+  },
+  yuelao: {
+    name: 'Yue Lao', zh: '月老',
+    badge: 'God of Love & Destiny', badge_zh: '愛情與命運之神',
+    bg: '#3a0a20', img: 'images/yue lao.png', intent: 'love',
+    prompt: '"What have you been afraid to hope for?"',
+    prompt_zh: '「你不敢奢望的是什麼？」',
+    story: 'On the night you were born, Yue Lao wrote your name in his book — next to another name. He has been tying the invisible red thread between you ever since. He is patient, working across years and lifetimes.',
+    story_zh: '你出生的那一夜，月老在他的書中寫下你的名字——緊鄰著另一個名字。從那時起，他便悄悄為你們牽起那條無形的紅線。他耐心等待，跨越歲月與輪迴。',
+    prayers: ['Finding a partner', 'Mending a relationship', 'Trusting in timing', 'Marriage'],
+    prayers_zh: ['尋得良緣', '修復感情', '相信緣分的時機', '婚姻'],
+    symbol: 'The red thread of fate — 紅線 — tied between the ankles of people destined to meet. It never breaks, no matter the distance or time.',
+    symbol_zh: '命運的紅線——緊繫在有緣人的腳踝之間。無論相隔多遠、歲月多長，它從不斷裂。'
+  },
+  wenchang: {
+    name: 'Wen Chang', zh: '文昌帝君',
+    badge: 'God of Literature & Career', badge_zh: '文學與事業之神',
+    bg: '#0e2030', img: 'images/wenchan.png', intent: 'success',
+    prompt: '"What clarity are you searching for?"',
+    prompt_zh: '「你在尋找什麼樣的清明？」',
+    story: 'Wen Chang was reborn seventeen times, each life devoted to learning and virtue. The Jade Emperor appointed him keeper of the Book of Fate — the record of every scholar and seeker. He is demanding, because he knows what you are capable of.',
+    story_zh: '文昌帝君歷經十七次轉世，每一世都致力於學問與德行。玉皇大帝封他為命運之書的守護者——那本記載每位學子與求道者的冊子。他要求嚴格，因為他深知你的潛力。',
+    prayers: ['Exam success', 'Career direction', 'Creative work', 'Finding purpose'],
+    prayers_zh: ['考試順利', '事業方向', '創作靈感', '找到人生目標'],
+    symbol: 'A blue scroll listing those who will pass their exams. He holds it as possibility, not promise — the rest is yours to earn.',
+    symbol_zh: '一卷藍色名冊，記載著將金榜題名之人。他手持的是可能性，而非保證——其餘的，需靠你自己努力。'
+  },
+  tudigong: {
+    name: 'Tudi Gong', zh: '土地公·福德正神',
+    badge: 'God of the Earth & Wealth', badge_zh: '土地與財富之神',
+    bg: '#2a1800', img: 'images/tudigong.png', intent: 'wealth',
+    prompt: '"What small thing would make your days feel lighter?"',
+    prompt_zh: '「什麼樣的小事能讓你的日子輕鬆一些？」',
+    story: 'Tudi Gong is the most approachable of gods — a kind old man who watches over your neighborhood, your business, your daily life. He sits in his shrine at the corner of the street and knows everyone who passes.',
+    story_zh: '土地公是最親切的神明——一位慈祥的老者，守護著你的街坊鄰里、你的生意、你的日常生活。他坐在街角的小廟裡，認識每一個經過的人。',
+    prayers: ['Business luck', 'Daily blessings', 'Community', 'Small wishes'],
+    prayers_zh: ['生意興隆', '日常平安', '鄰里和睦', '小小心願'],
+    symbol: 'A gold ingot representing the small, real prosperities of daily life. Not fortune — enough. Not wealth — comfort.',
+    symbol_zh: '一枚金元寶，代表日常生活中真實而踏實的富足。不是大富大貴——而是剛好夠用；不是財富——而是安穩。'
+  },
+  guan: {
+    name: 'Guan', zh: '關聖帝君',
+    badge: 'God of Justice & Loyalty', badge_zh: '正義與忠義之神',
+    bg: '#1a0800', img: 'images/guan.png', intent: 'courage',
+    prompt: '"What do you need the courage to face?"',
+    prompt_zh: '「你需要勇氣去面對什麼？」',
+    story: 'Guan Yu was a real man — a Three Kingdoms general executed in 220 CE. His power only grew after death. Today he is prayed to by both police and criminals, by anyone who needs to know that integrity still means something.',
+    story_zh: '關羽是真實存在的人——三國時代的大將，於公元220年被斬首。死後，他的神力有增無減。如今，警察與江湖人士都向他祈禱，凡是需要相信道義仍有意義的人，都會來拜他。',
+    prayers: ['Justice', 'Business protection', 'Loyalty', 'Courage'],
+    prayers_zh: ['公平正義', '生意保護', '忠義誠信', '勇氣'],
+    symbol: 'The Green Dragon Crescent Blade — his weapon is not for conquest but for justice. His red face means nothing passes unseen.',
+    symbol_zh: '青龍偃月刀——他的武器不為征服，而為正義。他的紅臉意味著一切皆在他的注視之下，無所遁形。'
+  },
+  guanyin: {
+    name: 'Guanyin', zh: '觀世音菩薩',
+    badge: 'Goddess of Compassion', badge_zh: '慈悲女神',
+    bg: '#0e2018', img: 'images/guanin.png', intent: 'health',
+    prompt: '"What are you carrying that feels too heavy to hold alone?"',
+    prompt_zh: '「你獨自承擔著什麼，沉重到難以為繼？」',
+    story: 'Guanyin stood at the threshold of enlightenment — and looked back. She heard the sound of the world suffering and she stayed. Her name means "she who hears the cries of the world." She does not judge. She only listens.',
+    story_zh: '觀音菩薩站在涅槃的門檻前——卻回頭了。她聽見世間的苦難之聲，選擇留下。她的名字意為「傾聽世間哭泣之聲者」。她不評判，只是靜靜聆聽。',
+    prayers: ['Healing', 'Inner peace', 'Grief', 'Anxiety'],
+    prayers_zh: ['身心療癒', '內心平靜', '走出悲痛', '緩解焦慮'],
+    symbol: 'A willow branch and pure water — she sprinkles them to cleanse suffering. She holds them gently, the way peace should always be held.',
+    symbol_zh: '一枝柳條與純淨的水——她輕灑以淨化苦難。她溫柔地持握著，正如平靜應有的姿態。'
+  }
+};
+
+var PRAY_MAP = { success: 'wenchang', love: 'yuelao', health: 'guanyin', wealth: 'tudigong', wisdom: 'wenchang', luck: 'tudigong' };
+
+var RESULTS = [
+  { type: 'moon',  icon: '🌙', title: 'Moon — 聖杯', title_zh: '聖杯 — 神明同意', zh: 'Deity Agrees', zh_zh: '神明同意',
+    msg: 'One curved side up, one flat side up. Your prayer has been heard. The path is open.',
+    msg_zh: '一正一反。你的祈禱已被聆聽，道路已然敞開。' },
+  { type: 'laugh', icon: '😄', title: 'Laugh — 笑杯', title_zh: '笑杯 — 再問一次', zh: 'Undecided', zh_zh: '尚未決定',
+    msg: 'Both curved sides up. The deity is smiling — reflect a little more, then ask again.',
+    msg_zh: '兩面皆朝上。神明在微笑——再多思考片刻，然後重新祈求。' },
+  { type: 'yin',   icon: '⚫', title: 'Yin — 陰杯',   title_zh: '陰杯 — 時機未到', zh: 'Not Yet',    zh_zh: '時機未到',
+    msg: 'Both flat sides up. This is not rejection. It is patience. The time is not right.',
+    msg_zh: '兩面皆朝下。這不是拒絕，而是耐心等待。時機尚未成熟。' }
+];
+
+var currentGodKey = 'wenchang';
+var currentModalGodKey = 'mazu';
+var moonCount = 0;
+var tossingLock = false;
+
+document.addEventListener('DOMContentLoaded', function() {
+  initScrollReveal();
+  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function() {}, { passive: true });
+}, { passive: true });
+});
+
+function updateNavTheme() {
+  var nav = document.getElementById('topnav');
+  var scrollY = window.scrollY;
+
+  // Light sections (cream/white background): quick-intro, gods
+  var lightSections = ['quick-intro', 'gods'];
+  // Dark sections: hero (image), ritual overlay, everything else
+  var isLight = false;
+
+  if (scrollY < 40) {
+    // At very top over hero — fully transparent
+    nav.classList.remove('nav-dark', 'nav-light');
+    return;
+  }
+
+  for (var i = 0; i < lightSections.length; i++) {
+    var el = document.getElementById(lightSections[i]);
+    if (el) {
+      var rect = el.getBoundingClientRect();
+      if (rect.top <= 60 && rect.bottom > 60) {
+        isLight = true;
+        break;
+      }
+    }
+  }
+
+  nav.classList.toggle('nav-light', isLight);
+  nav.classList.toggle('nav-dark', !isLight);
+}
+
+function initScrollReveal() {
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function(el) { el.classList.add('visible'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+  items.forEach(function(el) { obs.observe(el); });
+}
+
+var currentLang = 'en';
+
+function toggleLang() {
+  currentLang = currentLang === 'en' ? 'zh' : 'en';
+  var zh = currentLang === 'zh';
+  document.getElementById('lang-en').classList.toggle('active', !zh);
+  document.getElementById('lang-zh').classList.toggle('active', zh);
+  // Swap all data-en/data-zh elements
+  document.querySelectorAll('[data-en][data-zh]').forEach(function(el) {
+    el.innerHTML = el.getAttribute('data-' + currentLang);
+  });
+  // Swap SVG block labels
+  var svgLabels = {
+    'svg-label-a-yang': ['Curved · Yang', '正面 · 陽'],
+    'svg-label-a-yin':  ['Flat · Yin',    '反面 · 陰'],
+    'svg-label-b-yang': ['Curved · Yang', '正面 · 陽'],
+    'svg-label-b-yin':  ['Flat · Yin',    '反面 · 陰']
+  };
+  Object.keys(svgLabels).forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.textContent = zh ? svgLabels[id][1] : svgLabels[id][0];
+  });
+  // Re-render dynamic ritual content if open
+  if (typeof currentGodKey !== 'undefined') setRitualGod(currentGodKey);
+}
+
+// Set EN as active on load
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('lang-en').classList.add('active');
+});
+
+function openMenu() {
+  document.getElementById('menu-drawer').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+  document.getElementById('menu-drawer').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function scrollToEntry() {
+  document.getElementById('ritual-section').scrollIntoView({ behavior: 'smooth' });
+}
+function showAllGods() {
+  document.getElementById('gods').scrollIntoView({ behavior: 'smooth' });
+}
+
+function openRitual() {
+  resetToss();
+  goToRitualStep(1);
+  document.getElementById('ritual-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeRitual() {
+  document.getElementById('ritual-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+  resetToss();
+  goToRitualStep(1);
+}
+
+function goToRitualStep(n) {
+  document.querySelectorAll('.ritual-panel').forEach(function(p) { p.classList.remove('active'); });
+  var panel = document.getElementById('panel-' + n);
+  if (panel) panel.classList.add('active');
+}
+
+function selectIntent(cat) {
+  var godKey = PRAY_MAP[cat] || 'wenchang';
+  currentGodKey = godKey;
+  setRitualGod(godKey);
+  var zh = currentLang === 'zh';
+  var labelsEn = { success: 'SUCCESS', love: 'LOVE', health: 'HEALTH', wealth: 'WEALTH', wisdom: 'WISDOM', luck: 'LUCK' };
+  var labelsZh = { success: '成功', love: '愛情', health: '健康', wealth: '財富', wisdom: '智慧', luck: '好運' };
+  document.getElementById('p2-seeking').textContent = zh
+    ? '你祈求的是' + (labelsZh[cat] || cat)
+    : "YOU'RE SEEKING " + (labelsEn[cat] || cat.toUpperCase());
+  goToRitualStep(2);
+}
+
+function setRitualGod(key) {
+  var g = GODS[key];
+  if (!g) return;
+  currentGodKey = key;
+  var zh = currentLang === 'zh';
+  var p2img = document.getElementById('p2-img');
+  p2img.src = g.img; p2img.alt = g.name;
+  document.getElementById('p2-name').textContent = g.name;
+  document.getElementById('p2-zh').textContent = g.zh;
+  document.getElementById('p2-badge').textContent = zh ? g.badge_zh : g.badge;
+  document.getElementById('p2-prompt').textContent = zh ? g.prompt_zh : g.prompt;
+  document.getElementById('p2-begin-btn').textContent = zh
+    ? '與' + g.zh.split('·')[0] + '開始儀式 →'
+    : 'Begin the ritual with ' + g.name + ' →';
+  document.getElementById('panel-2').style.background = g.bg;
+  document.getElementById('p3-god-img').src = g.img;
+  document.getElementById('p3-god-img').alt = g.name;
+  document.getElementById('p3-god-ask').textContent = zh
+    ? '詢問' + g.zh.split('·')[0] + '是否聆聽你'
+    : 'Ask ' + g.name + ' if they hear you';
+  document.getElementById('p4-god-img').src = g.img;
+  document.getElementById('p4-god-img').alt = g.name;
+  document.getElementById('p4-god-name').textContent = g.name;
+  document.getElementById('p4-prompt').textContent = zh ? g.prompt_zh : g.prompt;
+  document.getElementById('p4-temple-link').textContent = zh
+    ? '尋找' + g.zh.split('·')[0] + '的廟宇 →'
+    : 'Find a temple for ' + g.name + ' →';
+  // textarea placeholder
+  var ta = document.getElementById('letter-textarea');
+  if (ta) ta.placeholder = zh
+    ? '寫下你心中所想。這個空間只屬於你。'
+    : 'Write what is in your heart. This space is yours alone.';
+}
+
+function showAllGodsRitual() {
+  currentGodKey = 'mazu';
+  setRitualGod('mazu');
+  document.getElementById('p2-seeking').textContent = currentLang === 'zh' ? '探索所有神明' : 'EXPLORING ALL GODS';
+  goToRitualStep(2);
+}
+
+function openGodModalFromRitual() {
+  openGodModal(currentGodKey);
+}
+
+function resetToss() {
+  moonCount = 0;
+  tossingLock = false;
+  var ba = document.getElementById('block-a');
+  var bb = document.getElementById('block-b');
+  if (ba) { ba.style.transition = 'none'; ba.classList.remove('flipped'); }
+  if (bb) { bb.style.transition = 'none'; bb.classList.remove('flipped'); }
+  setTimeout(function() {
+    if (ba) ba.style.transition = '';
+    if (bb) bb.style.transition = '';
+  }, 50);
+  setBadgeEl('badge-a', null);
+  setBadgeEl('badge-b', null);
+  for (var i = 0; i < 3; i++) {
+    var dot = document.getElementById('dot-' + i);
+    if (dot) dot.classList.remove('lit');
+  }
+  var banner = document.getElementById('toss-result');
+  if (banner) banner.classList.remove('visible');
+  var btn = document.getElementById('toss-btn');
+  if (btn) {
+    btn.textContent = '\uD83C\uDF19 Toss the Blocks';
+    btn.classList.remove('confirmed');
+    btn.disabled = false;
+    btn.onclick = doToss;
+  }
+}
+
+function doToss() {
+  if (tossingLock) return;
+  tossingLock = true;
+  var rand = Math.random();
+  var result;
+  if (rand < 0.5) result = RESULTS[0];
+  else if (rand < 0.8) result = RESULTS[1];
+  else result = RESULTS[2];
+  var aYang, bYang;
+  if (result.type === 'moon') {
+    if (Math.random() < 0.5) { aYang = true; bYang = false; }
+    else { aYang = false; bYang = true; }
+  } else if (result.type === 'laugh') {
+    aYang = true; bYang = true;
+  } else {
+    aYang = false; bYang = false;
+  }
+  var ba = document.getElementById('block-a');
+  var bb = document.getElementById('block-b');
+  ba.style.transition = 'none';
+  bb.style.transition = 'none';
+  ba.classList.remove('flipped');
+  bb.classList.remove('flipped');
+  void ba.offsetHeight;
+  setTimeout(function() {
+    ba.style.transition = '';
+    bb.style.transition = '';
+    if (!aYang) ba.classList.add('flipped');
+    if (!bYang) bb.classList.add('flipped');
+  }, 30);
+  setTimeout(function() {
+    setBadgeEl('badge-a', aYang);
+    setBadgeEl('badge-b', bYang);
+    showResultBanner(result);
+    if (result.type === 'moon') {
+      moonCount++;
+      var dot = document.getElementById('dot-' + (moonCount - 1));
+      if (dot) dot.classList.add('lit');
+    }
+    if (moonCount >= 3) {
+      setTimeout(function() {
+        var btn = document.getElementById('toss-btn');
+        btn.textContent = '\u2713 Confirmed \u2014 Write Your Letter \u2192';
+        btn.classList.add('confirmed');
+        btn.onclick = function() { goToRitualStep(4); };
+        tossingLock = false;
+      }, 500);
+    } else {
+      tossingLock = false;
+    }
+  }, 760);
+}
+
+function setBadgeEl(id, isYang) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  var zh = currentLang === 'zh';
+  el.classList.remove('yang', 'yin');
+  if (isYang === null || isYang === undefined) {
+    el.textContent = '—';
+  } else if (isYang) {
+    el.classList.add('yang');
+    el.textContent = zh ? '☀ 正面朝上' : '☀ Curved up';
+  } else {
+    el.classList.add('yin');
+    el.textContent = zh ? '◼ 反面朝上' : '◼ Flat up';
+  }
+}
+
+function showResultBanner(result) {
+  var banner = document.getElementById('toss-result');
+  banner.classList.remove('visible');
+  void banner.offsetHeight;
+  var zh = currentLang === 'zh';
+  document.getElementById('res-icon').textContent = result.icon;
+  document.getElementById('res-title').textContent = zh ? result.title_zh : result.title;
+  document.getElementById('res-zh').textContent = zh ? result.zh_zh : result.zh;
+  document.getElementById('res-msg').textContent = zh ? result.msg_zh : result.msg;
+  banner.classList.add('visible');
+}
+
+function openGodModal(key) {
+  var g = GODS[key];
+  if (!g) return;
+  currentModalGodKey = key;
+  var zh = currentLang === 'zh';
+  document.getElementById('modal-hero-img').style.backgroundImage = 'url("' + g.img + '")';
+  document.getElementById('modal-badge').textContent = zh ? g.badge_zh : g.badge;
+  document.getElementById('modal-name').textContent = g.name;
+  document.getElementById('modal-zh').textContent = g.zh;
+  document.getElementById('modal-story').textContent = zh ? g.story_zh : g.story;
+  document.getElementById('modal-symbol').textContent = zh ? g.symbol_zh : g.symbol;
+  var el = document.getElementById('modal-prayers');
+  el.innerHTML = '';
+  var prayers = zh ? g.prayers_zh : g.prayers;
+  prayers.forEach(function(p) {
+    var chip = document.createElement('span');
+    chip.className = 'prayer-chip';
+    chip.textContent = p;
+    el.appendChild(chip);
+  });
+  var modal = document.getElementById('god-modal');
+  modal.scrollTop = 0;
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeGodModal() {
+  document.getElementById('god-modal').classList.remove('open');
+  if (!document.getElementById('ritual-overlay').classList.contains('open')) {
+    document.body.style.overflow = '';
+  }
+}
+
+function speakToGod() {
+  var key = currentModalGodKey;
+  closeGodModal();
+  currentGodKey = key;
+  setRitualGod(key);
+  if (!document.getElementById('ritual-overlay').classList.contains('open')) {
+    document.getElementById('ritual-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  resetToss();
+  goToRitualStep(3);
+}
+
+function keepLetter() {
+  alert('Saved privately to your device.');
+}
+
+function burnLetter() {
+  document.getElementById('letter-textarea').value = '';
+  document.getElementById('burn-overlay').classList.add('open');
+}
+
+function closeBurn() {
+  document.getElementById('burn-overlay').classList.remove('open');
+}
+</script>
+</body>
+</html>
